@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Posts{% endblock %}
+	
+{% block content %}
+    <aside>
+		<h2>紀錄</h2>
+		{% for post in posts %}
+		<li>
+			<p><a href="/post/{{ post.id }}">{{ post.title }}</a></p>
+		</li>
+		{% endfor %}
+	</aside>
+    <main>
+        <h1>留言板</h1>
+		<p>You have <strong>{{ posts.length }}</strong> posts!</p>
+		<p><a href="/post/new">新增</a></p>
+		<ul id="posts">
+			{% for post in posts %}
+			<article>
+				<li>
+				<h2>{{ post.title }}</h2>
+				<p>{{ post.body }}</p>
+				<div class="r">
+					<p><a href="/post/{{ post.id }}">留言</a></p>
+				</div>
+				</li>
+			</article>
+			{% endfor %}
+		</ul>
+    </main>
+    <footer>footer</footer>
+{% endblock %}

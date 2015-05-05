@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<pre>
+<h1>{{ post.title }}</h1>
+<h3>{{ post.body }}</h3>
+</pre>
+{% for message in messages %}
+	<section>
+		<h2>{{ message.title }}</h2>
+		<p>{{ message.body }}</p>
+	</section>
+{% endfor %}
+
+ <footer>
+  <p>Leave your message.</p>
+  <form action="/post/{{post.id}}/message" method="post">
+    <p><input type="text" placeholder="Title" name="title"></p>
+    <p><textarea placeholder="Contents" name="body"></textarea></p>
+    <p><input type="submit" value="Create"></p>
+  </form>
+</footer>
+
+{% endblock %}

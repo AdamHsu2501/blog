@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block title %}New Post{% endblock %}
+
+{% block content %}
+<h1>新增</h1>
+<div class="n">
+  <p>Create a new post.</p>
+  <form action="/post" method="post">
+    <p><input type="text" placeholder="Title" name="title"></p>
+    <p><textarea placeholder="Contents" name="body"></textarea></p>
+    <p><input type="submit" value="Create"></p>
+  </form>
+ </div>
+{% endblock %}
