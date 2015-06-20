@@ -16,14 +16,20 @@
 		<p>You have <strong>{{ posts.length }}</strong> posts!</p>
 		<p><a href="/post/new">新增</a></p>
 		<ul id="posts">
-			{% for post in posts %}
+			{% for id, post in posts|reverse %}
 			<article>
 				<li>
 				<h2>{{ post.title }}</h2>
 				<p>{{ post.body }}</p>
-				<div class="r">
-					<p><a href="/post/{{ post.id }}">留言</a></p>
-				</div>
+				<p ><a href="/post/{{ post.id }}">留言</a></p>
+				{% for message in messages %}
+					{% if post.id == message.postId %}
+						<section>
+							<h2>{{ message.title }}</h2>
+							<p>{{ message.body }}</p>
+						</section>
+					{% endif %}
+				{% endfor %}
 				</li>
 			</article>
 			{% endfor %}
